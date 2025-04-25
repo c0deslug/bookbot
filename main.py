@@ -2,6 +2,7 @@ from stats import wordcount
 from stats import allchars
 from stats import numchars
 from stats import sortchars
+import sys
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -9,7 +10,10 @@ def get_book_text(filepath):
     return file_contents
     
 def main():
-    booktext = get_book_text("/Users/srados/workspace/github.com/c0deslug/bookbot/books/frankenstein.txt")
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    booktext = get_book_text(sys.argv[1])
     #print (booktext)
     num_words = wordcount(booktext) # gets wordcount
  
