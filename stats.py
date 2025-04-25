@@ -21,3 +21,20 @@ def numchars(booktext, unique_chars):
         if char in char_table:
             char_table[char] += 1
     return char_table
+
+# A function that takes a dictionary and returns the value of the "num" key
+# This is how the `.sort()` method knows how to sort the list of dictionaries
+def sort_on(dict):
+    return dict["num"]
+
+def sortchars(char_count):
+    new_dict = {}
+    list_of_dicts = []
+    for char in char_count:
+        new_dict = {
+        "char": char,
+        "num": char_count[char]
+        }
+        list_of_dicts.append(new_dict)
+    list_of_dicts.sort(reverse=True, key=sort_on)        
+    return list_of_dicts
